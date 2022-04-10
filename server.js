@@ -9,7 +9,8 @@ app.use(express.static(__dirname + '/dist/TASKMANAGMENT'));
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join('./dist/TASKMANAGMENT/login.html'));
+// res.sendFile(path.join('./dist/TASKMANAGMENT/login.html'));
+res.sendFile('index.html', { root: __dirname });
 });
 
 // Start the app by listening on the default Heroku port

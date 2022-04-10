@@ -1,0 +1,90 @@
+<div class="login-page-container">
+    <div class="cont">
+        <!--  sign in -->
+        <div class="form sign-in">
+            <h2>
+                <!-- <img src="/assets/image/logo/logo.jpeg" width="100" alt="" srcset=""> -->
+            </h2>
+            <div class="Register-through">
+                    <span class="Register-email" (click)="toggleShowRegisterEmail()">Login With User Name   </span>
+            </div>
+
+            <div class="content-sign">
+                <div class="RegisterByEmail" *ngIf="isShowRegisterEmail">
+                    <form [formGroup]="signinForm" (ngSubmit)="loginUser()">
+                        <label>
+                            <span> username</span>
+                            <input 
+                            type="email"
+                            class="form-control"
+                            formControlName="username"
+                            placeholder="Username"
+                            required
+                            />
+                        </label>
+                        <label>
+                            <span>password</span>
+                            <input 
+                            type="password"
+                            class="form-control"
+                            formControlName="password"
+                            placeholder="Password"
+                            />
+                        </label>
+                        <!-- <p class="forgot-pass">نسيت كلمة المرور ؟</p> -->
+                        <button type="button" class="submit" (click)="loginUser()"> Login</button> 
+                  </form>
+                </div>
+            </div>
+        </div>
+
+        <!--  Registration  -->
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h4> Register Admin/Employee</h4>
+                   
+                </div>
+                <div class="img__text m--in">
+                    <h2>Login</h2>
+                    <!-- <p>إذا كان لديك حساب فعلًا، فما عليك سوى تسجيل الدخول</p> -->
+                </div>
+                <div class="img__btn" (click)="clicksing()">
+                    <span class="m--up">Register </span>
+                    <span class="m--in"> Login</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>
+                    <!-- <img src="/assets/image/logo/logo.jpeg" width="100" alt="" srcset=""> -->
+                </h2>
+                <form autocomplete="off" [formGroup]="AddRegisterform">
+                    <div class="step1" *ngIf="isShowStep1">
+                        <label>
+                            <span>email </span>
+                            <input type="email" formControlName="email" />
+                        </label>
+                        <label>
+                            <span>User Name</span>
+                            <input type="text" formControlName="username" />
+                        </label>
+                        <label>
+                            <span>Phone Number</span>
+                            <input type="text" formControlName="phoneNumer"  />
+                        </label>
+                        <label>
+                            <span>Password </span>
+                            <input type="password" formControlName="password"  />
+                        </label>
+                        <label>
+                            <span>userType </span>
+                            <input type="number" formControlName="userType" />
+                        </label>
+                        <button type="button" class="submit mt-1" (click)="Registration()">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,82 @@
+<div class="container">
+    <form [formGroup]="AddTask" (ngSubmit)="AddTaskPost()">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"> Name</label>
+
+            <ng-select [items]="UaserDataAll" bindLabel="userName" bindValue="id" formControlName="userId">
+            </ng-select>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"> Task</label>
+            <input type="text" formControlName="name" class="form-control" id="exampleFormControlInput1">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Description </label>
+            <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1"
+                rows="3"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="AddTaskPost()">Save</button>
+    </form>
+
+    <hr>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Task</th>
+                <th scope="col">description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of getAllTask  index as i;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{data.name}}</td>
+                <td>{{data.description}}</td>
+                <td>
+                    <button type="button" class="btn btn-secondary" (click)="openEdit(data)">Edit</button>
+                </td>
+                <td> 
+                    <button type="button" class="btn btn-danger" (click)="deleteTask(data.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<ng-template #contentEdit let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="EditTasks" (ngSubmit)="EditTask()">
+          
+            <div class="mb-3">
+                <input type="text" formControlName="id" class="form-control" id="exampleFormControlInput1" hidden>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"> Task</label>
+                <input type="text" formControlName="name" class="form-control" id="exampleFormControlInput1">
+            </div>
+    
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Description </label>
+                <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1"
+                    rows="3"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="EditTask()">Save</button>
+        </form>
+    </div>
+    <!-- <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div> -->
+  </ng-template>
+  
+  

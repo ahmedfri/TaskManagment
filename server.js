@@ -8,7 +8,7 @@ const app = express();
 app.use(express.static('./dist/TASKSMANAGMENT'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/TASKSMANAGMENT/'}),
+    res.sendFile('login.html', {root: 'dist/TASKSMANAGMENT/'}),
 );
 
 // Start the app by listening on the default Heroku port
